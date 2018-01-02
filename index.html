@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!--Generic treemap, based on http://bost.ocks.org/mike/treemap/-->
+<html>
+<head>
+<meta charset="utf-8">
+<title>Data Breaches</title>
+<!-- Enable responsive viewport -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Le styles -->
+<link rel="stylesheet" href="css/bootstrap.2.2.2.min.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/kbroman.css">
+
+<script src="http://mbostock.github.com/d3/d3.v2.js"></script>
+<script src="d3.parsets.js"></script>
+<link rel="stylesheet" href="d3.parsets.css"></link>
+<script>
+var chart = d3.parsets()
+      .dimensions(["Organisation"]);
+
+var vis = d3.select("#vis").append("svg")
+    .attr("width", chart.width())
+    .attr("height", chart.height());
+
+d3.csv("databreaches.csv", function(error, csv) {
+  vis.datum(csv).call(chart);
+});
+</script>
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="container-narrow">
+            <a class="brand" href="https://github.com/Bengis">Repositorio de Github</a>
+        </div>
+    </div>
+</div>
+<div class="container-narrow">
+    <div class="content">
+        <div class="page-header">
+            <h2>Data-breaches</h2>
+        </div>
+        <div class="row-fluid">
+            <div class="span12">
+                <p>Data-breaches es un prototipo de visualización de datos inspirada en el comic <a href="https://xkcd.com/980/">Money</a> de xkcd
+                y en la visualización <a href="http://www.informationisbeautiful.net/visualizations/the-billion-pound-o-gram/">Billion O-Gram</a> de de David McCandless</p>
+                <p>El código fuente de la visualización esta en:</p>
+                <div class="highlighter-rouge">
+                    <div class="highlight">
+                        <pre class="highlight"><code><a href="https://github.com/Bengis/money-o-gram">https://github.com/Bengis/money-o-gram</a></code></pre>
+                    </div>
+                </div>
+                Esta es una visualización interactiva:
+                <ul> 
+                    <li>Puede pulsar en cada area y ver los elementos que forma la misma.</li> 
+                    <li>Las áreas pueden tener subareas que explorar.</li>
+                    <li>Para volver al área anterior debe pulsar en la barra naranja de la zona superior.</li>
+                </ul>
+            </div>
+        </div>
+        <div id="vis"></div>
+    </div>
+    <h3>Credits</h3>
+    <ul>
+        <li>Código d3.js: <a href="http://bl.ocks.org/ganeshv/6a8e9ada3ab7f2d88022">Zoomable Treempap D3 by Ganesh Vancheeswaran</a></li>
+        <li>Código web: <a href="http://kbroman.org/simple_site/pages/user_site.html">Simple site by Karl Broman</a></li>
+    </ul>
+    <hr>
+      <footer>
+        <p><small>
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>&nbsp;
+            <a href="https://github.com/Bengis">Ignacio Bengoechea</a>
+        </small></p>
+      </footer>
+</div>
+</body>
+</html>
