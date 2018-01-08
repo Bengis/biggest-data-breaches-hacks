@@ -119,16 +119,6 @@
           textEnter.append("tspan")
               .attr("class", "name")
               .text(dimensionFormatName);
-          textEnter.append("tspan")
-              .attr("class", "sort alpha")
-              .attr("dx", "2em")
-              .text("alpha »")
-              .on("mousedown.parsets", cancelEvent);
-          textEnter.append("tspan")
-              .attr("class", "sort size")
-              .attr("dx", "2em")
-              .text("size »")
-              .on("mousedown.parsets", cancelEvent);
           dimension
               .call(d3.behavior.drag()
                 .origin(identity)
